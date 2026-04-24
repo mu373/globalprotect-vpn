@@ -1,0 +1,11 @@
+# User-specific SSH keys
+authorized_keys
+
+# Vendor binaries (downloaded separately)
+GlobalProtect_deb-*.deb
+PanGPLinux-*.tgz
+
+# Local overrides
+docker-compose.override.yml
+.env
+!.env.example

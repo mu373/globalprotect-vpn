@@ -1,0 +1,21 @@
+services:
+  vpn:
+    build: .
+    image: globalprotect-vpn:latest
+    container_name: univ-vpn
+    hostname: univ-vpn
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    ports:
+      - "2222:22"
+    volumes:
+      - ./authorized_keys:/home/vpnuser/.ssh/authorized_keys:ro
+      - gp-state:/home/vpnuser/.config
+    restart: unless-stopped
+    environment:
+      - GP_PORTAL=${GP_PORTAL:?set GP_PORTAL in .env}
+
+volumes:
+  gp-state:

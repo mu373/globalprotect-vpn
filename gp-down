@@ -1,0 +1,2 @@
+#!/bin/bash
+exec docker exec -u vpnuser univ-vpn sudo gpclient disconnect

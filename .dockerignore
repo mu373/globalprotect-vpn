@@ -1,0 +1,4 @@
+PanGPLinux-*.tgz
+docker-compose.yml
+.dockerignore
+*.md
