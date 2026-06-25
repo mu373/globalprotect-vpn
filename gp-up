@@ -29,7 +29,12 @@ while IFS= read -r line; do
 
       http://localhost:${port}${path}
 
-  Copy the globalprotectcallback:... string back into THIS terminal.
+  After SSO, your browser may show or redirect to a URL that starts with:
+
+      globalprotectcallback:...
+
+  Copy and paste that whole globalprotectcallback:... string back into
+  THIS terminal, then press Enter.
 ────────────────────────────────────────────────────────────────────
 
 EOF
