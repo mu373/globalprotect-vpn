@@ -4,8 +4,18 @@ services:
     image: globalprotect-vpn:latest
     container_name: univ-vpn
     hostname: univ-vpn
+    cap_drop:
+      - ALL
     cap_add:
+      - AUDIT_WRITE
+      - CHOWN
+      - DAC_OVERRIDE
+      - SETGID
+      - SETUID
+      - SYS_CHROOT
+      - NET_BIND_SERVICE
       - NET_ADMIN
+      - NET_RAW
     devices:
       - /dev/net/tun
     ports:
@@ -14,6 +24,9 @@ services:
       - ./authorized_keys:/home/vpnuser/.ssh/authorized_keys:ro
       - gp-state:/home/vpnuser/.config
     restart: unless-stopped
+    pids_limit: 256
+    mem_limit: 1g
+    cpus: 1.0
     environment:
       - GP_PORTAL=${GP_PORTAL:?set GP_PORTAL in .env}
 
